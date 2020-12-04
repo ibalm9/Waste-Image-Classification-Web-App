@@ -1,4 +1,5 @@
 numpy
 pillow
 flask
+torch==1.5.0+cpu 
 torchvision==0.8.1
