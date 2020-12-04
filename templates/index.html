@@ -1,0 +1,24 @@
+
+<!doctype html>
+<title>Sampah</title>
+
+<h2>Klasifikasi sampah organik, reusable, recyclable</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+        Hasil: {{ messages[0] }}
+         | Source : {{ messages[2] }}
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+	<p>
+		<input type="file" name="file" autocomplete="off" required>
+	</p>
+    </dl>
+    <p>
+	<input type="submit" value="Prediksi">
+    </p>
+</form>
+
