@@ -1,24 +1,38 @@
 
 <!doctype html>
-<title>Sampah</title>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<link rel="stylesheet" href="style.css">
+	</head>
 
-<h2>Klasifikasi sampah organik, reusable, recyclable</h2>
-<p>
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-        Hasil: {{ messages[0] }}
-         | Source : {{ messages[2] }}
-	  {% endif %}
-	{% endwith %}
-</p>
-<form method="post" action="/" enctype="multipart/form-data">
-    <dl>
-	<p>
-		<input type="file" name="file" autocomplete="off" required>
-	</p>
-    </dl>
-    <p>
-	<input type="submit" value="Prediksi">
-    </p>
-</form>
+	<body>
+		<div class="row">
+			<div class="column">
+				<form method="post" action="/" enctype="multipart/form-data">
+					<dl>
+					<p>
+						<input type="file" name="file" autocomplete="off" required>
+					</p>
+					</dl>
+					<p>
+					<input type="submit" value="Prediksi">
+					</p>
+				</form>
+			</div>
+			<div class="column">
+				<title>Trash Classification</title>
 
+				<h1>Klasifikasi sampah organik, reusable, recyclable</h1>
+				<p>
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						Hasil: {{ messages[0] }}
+						| Source : {{ messages[2] }}
+					{% endif %}
+					{% endwith %}
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
