@@ -1,37 +1,83 @@
-
 <!doctype html>
 <html>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
-		<link rel="stylesheet" href="style.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style>
+			* {
+				font-family: 'Montserrat', sans-serif;;
+			}
+
+			body, html {
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+				background-image: url({{url_for('static', filename='bg-image.jpg')}});
+			}
+
+			.inputfile {
+				width: 200px;
+				height: 25px;
+				opacity: 0;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+			}
+			.inputfile + label {
+				width: 200px;
+				height: 25px;
+				font-size: 1.25em;
+				font-weight: 700;
+				color: black;
+				background-color: white;
+				display: inline-block;
+			}
+
+			.inputfile:focus + label,
+			.inputfile + label:hover {
+				background-color: red;
+			}
+			.inputfile + label {
+				cursor: pointer; /* "hand" cursor */
+			}
+			.inputfile:focus + label {
+				outline: 1px dotted #000;
+				outline: -webkit-focus-ring-color auto 5px;
+			}
+		</style>
 	</head>
 
-	<body>
-		<div class="row">
-			<div class="column">
-				<form method="post" action="/" enctype="multipart/form-data">
-					<dl>
-					<p>
-						<input type="file" name="file" autocomplete="off" required>
-					</p>
-					</dl>
-					<p>
-					<input type="submit" value="Prediksi">
-					</p>
-				</form>
-			</div>
-			<div class="column">
-				<title>Trash Classification</title>
+	<title>Trash Classification</title>
 
-				<h1>Klasifikasi sampah organik, reusable, recyclable</h1>
-				<p>
-					{% with messages = get_flashed_messages() %}
-					{% if messages %}
-						Hasil: {{ messages[0] }}
-						| Source : {{ messages[2] }}
-					{% endif %}
-					{% endwith %}
-				</p>
+	<body>
+		<div class="container">
+			<div class="row col-sm-12 my-auto">
+				<div class="col-md-6">
+					<form method="post" action="/" enctype="multipart/form-data">
+						<dl>
+							<p>
+								<input type="file" name="file" id="file" class="inputfile" autocomplete="off" required>
+								<label style="text-align: center;" for="file">CHOOSE A FILE</label>
+							</p>
+						</dl>
+						<p>
+							<input type="submit" value="PREDICT YOUR GARBAGE">
+						</p>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<p>
+						{% with messages = get_flashed_messages() %}
+						{% if messages %}
+							Hasil: {{ messages[0] }}
+							| Source : {{ messages[2] }}
+						{% endif %}
+						{% endwith %}
+					</p>
+				</div>
 			</div>
 		</div>
 	</body>
