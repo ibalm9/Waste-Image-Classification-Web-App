@@ -3,49 +3,69 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<style>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<style type="text/css">
 			* {
-				font-family: 'Montserrat', sans-serif;;
+				font-family: 'Montserrat', sans-serif;
 			}
 
 			body, html {
-				background-repeat: no-repeat;
-				background-attachment: fixed;
+				color: white;
+				background:url('/static/img/bg-image.jpg') no-repeat center center fixed;
+				-moz-background-size: cover;
+				-webkit-background-size: cover;
+				-o-background-size: cover;
 				background-size: cover;
-				background-image: url({{url_for('static', filename='bg-image.jpg')}});
 			}
 
-			.inputfile {
-				width: 200px;
-				height: 25px;
-				opacity: 0;
-				overflow: hidden;
-				position: absolute;
-				z-index: -1;
+			input[type="file"] {
+				display: none;
+				align-items: center
 			}
-			.inputfile + label {
+
+			#file {
+				color: white;
+				height: 60px;
 				width: 200px;
-				height: 25px;
-				font-size: 1.25em;
-				font-weight: 700;
-				color: black;
+				background-color: #134611;
+				border-style: none;
+				border-radius: 5px;
+				padding-top: 18px;
+				text-align: center;
+			}
+
+			#file:hover {
+				color: #134611;
+				height: 60px;
+				width: 200px;
 				background-color: white;
-				display: inline-block;
+				border-style: none;
+				border-radius: 5px;
 			}
 
-			.inputfile:focus + label,
-			.inputfile + label:hover {
-				background-color: red;
+			#submit {
+				color: white;
+				height: 60px;
+				width: 300px;
+				background-color: transparent;
+				border-style: solid;
+				border-color: black;
+				border-radius: 5px;
+				padding-top: 18px;
+				text-align: center;
 			}
-			.inputfile + label {
-				cursor: pointer; /* "hand" cursor */
-			}
-			.inputfile:focus + label {
-				outline: 1px dotted #000;
-				outline: -webkit-focus-ring-color auto 5px;
+
+			#submit:hover {
+				color: #134611;
+				height: 60px;
+				width: 300px;
+				background-color: white;
+				opacity: 1;
+				border-style: solid;
+				border-color: white;
+				border-style: none;
+				border-radius: 5px;
 			}
 		</style>
 	</head>
@@ -54,31 +74,43 @@
 
 	<body>
 		<div class="container">
-			<div class="row col-sm-12 my-auto">
+			<div class="row" style="margin-top: 30%;">
 				<div class="col-md-6">
 					<form method="post" action="/" enctype="multipart/form-data">
 						<dl>
 							<p>
 								<input type="file" name="file" id="file" class="inputfile" autocomplete="off" required>
-								<label style="text-align: center;" for="file">CHOOSE A FILE</label>
+								<label for="file" id="file">CHOOSE A FILE</label>
+							</p>
+						</dl>
+						<dl>
+							<p>
+								<input type="submit" name="submit" id="submit" class="inputsubmit" autocomplete="off" required hidden="hidden">
+								<label for="submit" id="submit">PREDICT YOUR TRASH TYPE</label>
 							</p>
 						</dl>
 						<p>
-							<input type="submit" value="PREDICT YOUR GARBAGE">
+							{% with messages = get_flashed_messages() %}
+							{% if messages %}
+								Hasil: {{ messages[0] }}
+								| Source : {{ messages[2] }}
+							{% endif %}
+							{% endwith %}
 						</p>
 					</form>
 				</div>
-				<div class="col-md-6">
-					<p>
-						{% with messages = get_flashed_messages() %}
-						{% if messages %}
-							Hasil: {{ messages[0] }}
-							| Source : {{ messages[2] }}
-						{% endif %}
-						{% endwith %}
-					</p>
+				<div class="col-md-6">				
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			const realFileBtn = document.getElementById("inputfile");
+			const realFileBtn = document.getElementById("custom-button");
+			const realFileBtn = document.getElementById("custom-text");
+
+			customBtn.addEventListener("click", function() {
+				realFileBtn.click();
+			})
+		</script>
 	</body>
 </html>
