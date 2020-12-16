@@ -1,5 +1,7 @@
 # Waste Image Classification using Web App based DenseNet121 Model
 
+![alt text](https://drive.google.com/file/d/1DiYZ7iJ_wgtC_dW1QwKk05Yb_Gcbtsai/view?usp=sharing)
+
 ## Kontributor
 1. Iqbal Maulana
 2. Alvian Putra pamungkas
