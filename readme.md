@@ -1,7 +1,5 @@
 # Waste Image Classification using Web App based DenseNet121 Model
 
-![alt text](https://drive.google.com/file/d/1DiYZ7iJ_wgtC_dW1QwKk05Yb_Gcbtsai/view?usp=sharing)
-
 ## Kontributor
 1. Iqbal Maulana
 2. Alvian Putra pamungkas
@@ -29,3 +27,6 @@ Membantu pemilahan barang sisa produksi / konsumsi menjadi barang yang dapat ter
 2. Terdapat kamera pada sebuah tong sampah untuk mengetahui dimana tempat sampah yang sesuai dengan jenis sampah
 3. Aplikasi android yang lebih mobile sehingga pengguna hanya perlu mengakses model serta prediksinya dengan cepat
 
+## Poster
+
+![Poster DTI Klasifikasi2](https://user-images.githubusercontent.com/15316744/102346892-316f6c80-3fd2-11eb-99d8-2786b86803cb.jpg)
