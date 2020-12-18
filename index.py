@@ -32,10 +32,14 @@ def submit_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
             getPrediction(filename)
-            label = getPrediction(filename)
+            label, probabilities, reuse, orga, recy = getPrediction(filename)
             flash(label)
             flash(filename)
             flash("C:/Users/g/dti1/uploads/"+filename)
+            flash(probabilities)
+            flash(reuse)
+            flash(orga)
+            flash(recy)
             return redirect('/')
 
 if __name__ == "__main__":

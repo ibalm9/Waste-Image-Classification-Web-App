@@ -30,10 +30,19 @@ def getPrediction(filename):
     image = image.unsqueeze(0)
     model.eval()
     result = np.argmax(model(image).detach().numpy())
+    output = model(image)
+    _, predicted = torch.max(output, 1)
+
+    sm = torch.nn.Softmax()
+    probabilities = sm(output) 
+    probabilities = probabilities.detach().numpy().tolist()
+    reuse = round(probabilities[0][0], 4)
+    orga = round(probabilities[0][1], 4)
+    recy = round(probabilities[0][2], 4)
     if result == 0:
         label = 'Reuse'
     elif result == 1:
         label = 'Organic'			
     elif result == 2:
         label = 'Recyle'
-    return label
+    return label, probabilities, reuse, orga, recy
